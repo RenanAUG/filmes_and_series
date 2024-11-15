@@ -1,0 +1,26 @@
+<div class="card mb-5" *ngFor="let filme of resultados">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img [src]="filme.Poster" class="img-fluid rounded-start" alt="{{ filme.Title }}" style="object-fit: cover; max-height: 100%;">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body" style="height: 100%; overflow-y: auto; padding: 10px;">
+        <h5 class="card-title">{{ filme.Title }}</h5>
+        <p class="card-text"><strong>Ano:</strong> {{ filme.Year }}</p>
+        <p class="card-text"><strong>Duração:</strong> {{ filme.Runtime }}</p>
+        <p class="card-text"><strong>Gênero:</strong> {{ filme.Genre }}</p>
+        <p class="card-text"><strong>Diretor:</strong> {{ filme.Director }}</p>
+        <p class="card-text"><strong>Atores:</strong> {{ filme.Actors }}</p>
+        <p class="card-text"><strong>Sinopse:</strong> {{ filme.Plot }}</p>
+        <p class="card-text"><strong>Premiações:</strong> {{ filme.Awards }}</p>
+        <p class="card-text"><strong>Box Office:</strong> {{ filme.BoxOffice }}</p>
+        <p class="card-text"><strong>Votos IMDB:</strong> {{ filme.imdbVotes }}</p>
+        <p class="card-text"><strong>Data Lançamento:</strong> {{ filme.Released }}</p>
+
+        <button class="btn btn-warning" (click)="favoritar(filme)">
+          {{ isFavoritado(filme) ? 'Remover Favorito' : 'Adicionar aos Favoritos' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

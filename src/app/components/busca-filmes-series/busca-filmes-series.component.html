@@ -1,0 +1,32 @@
+<div class="container-fluid p-2">
+  <h2 class="text-center">Buscar Filmes e Séries</h2>
+  <div class="input-group mb-5">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Digite o título"
+      [(ngModel)]="titulo"
+    />
+    <button class="btn btn-primary" (click)="buscarFilmesSeries()">Buscar</button>
+    <button class="btn btn-secondary" (click)="mostrarFavoritos()">Favoritos</button>
+  </div>
+
+  <div *ngIf="pesquisaRealizada && resultados.length > 0 && !mensagemErro">
+    <app-card-filmes-series
+      [resultados]="resultados"
+    ></app-card-filmes-series>
+  </div>
+
+  <!-- Mensagem de erro caso não encontre resultados -->
+  <div *ngIf="pesquisaRealizada && mensagemErro">
+    <p class="text-danger text-center">Nenhum resultado encontrado para "{{ titulo }}"</p>
+  </div>
+
+  <!-- Exibe os filmes favoritos -->
+  <div *ngIf="!pesquisaRealizada && filmesFavoritos.length > 0">
+    <app-filmes-favoritos [filmesFavoritos]="filmesFavoritos"></app-filmes-favoritos>
+  </div>
+</div>
+
+
+
