@@ -11,7 +11,7 @@
     <button class="btn btn-secondary" (click)="mostrarFavoritos()">Favoritos</button>
   </div>
 
-  <div *ngIf="pesquisaRealizada && resultados.length > 0 && !mensagemErro">
+  <div *ngIf="pesquisaRealizada && resultados.length > 0 && !mensagemErro && !mensagemErroRequisicoes">
     <app-card-filmes-series
       [resultados]="resultados"
     ></app-card-filmes-series>
@@ -20,6 +20,11 @@
   <!-- Mensagem de erro caso não encontre resultados -->
   <div *ngIf="pesquisaRealizada && mensagemErro">
     <p class="text-danger text-center">Nenhum resultado encontrado para "{{ titulo }}"</p>
+  </div>
+
+  <!-- Mensagem de erro caso ultrapasse o limite de requisições -->
+  <div *ngIf="pesquisaRealizada && mensagemErroRequisicoes">
+    <p class="text-danger text-center">Limite de Requisições ultrapassado</p>
   </div>
 
   <!-- Exibe os filmes favoritos -->
